@@ -29,4 +29,4 @@ function countLetters(string) {
     }
   return letters
 }
-console.log(countLetters("Hello I love you"))
+console.log(countLetters("Lighthouse in the house"))

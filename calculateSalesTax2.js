@@ -25,31 +25,26 @@ var companySalesData = [
 
 function salesTaxReport (salesData, taxRates) {
 
-
-  function totalSales(sales) {
-    var total = 0
-    sales.forEach(function(val) {
-    total += val
-    })
-    return total
-  }
-
   var companyReport = {}
 
+  function totalSales(company) {
+    return company.sales.reduce(function (previous, current) {
+      return previous + current
+    });
+  }
+
+  function calculateTax (company) {
+    return totalSales(company)*taxRates[company.province]
+  }
 
   salesData.forEach(function(company) {
-    var totalTax = 0
-    if (company.province === "AB") {
-      totalTax += totalSales(company.sales)*taxRates.AB
-      } else if (company.province === "BC") {
-      totalTax += totalSales(company.sales)*taxRates.BC
-      } else {
-      totalTax += totalSales(company.sales)*taxRates.SK
-      }
+
+    var totalTax = calculateTax(company)
+
     if (!companyReport.hasOwnProperty(company.name)) {
-      companyReport[company.name] = {'totalSales' : totalSales(company.sales), 'totalTaxes': totalTax}
+      companyReport[company.name] = {'totalSales' : totalSales(company), 'totalTaxes': totalTax}
     } else {
-      companyReport[company.name]['totalSales'] += totalSales(company.sales)
+      companyReport[company.name]['totalSales'] += totalSales(company)
       companyReport[company.name]['totalTaxes'] += totalTax
     }
   })

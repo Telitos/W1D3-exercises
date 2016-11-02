@@ -29,14 +29,15 @@ function totalSales(sales){
 
 
 function companySales(){
-  var companyTotalSales = {}
+  var companiesTotal = {}
+
   companySalesData.forEach(function(company) {
-  if (!companyTotalSales.hasOwnProperty(company.name)) {
-    companyTotalSales[company.name] = totalSales(company.sales)
+  if (!companiesTotal.hasOwnProperty(company.name)) {
+    companiesTotal[company.name] = {'Total-sales':  totalSales(company.sales)};
   } else {
-    companyTotalSales[company.name] += totalSales(company.sales)
+    companiesTotal[company.name]['Total-sale'] += totalSales(company.sales)
     }
   })
-  return companyTotalSales
+  return companiesTotal
 }
 console.log(companySales())

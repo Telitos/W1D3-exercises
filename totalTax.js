@@ -33,9 +33,10 @@ function totalSales(sales) {
   return total
 }
 
+var companiesTotal = {}
 
-// function companySales(){
-//   var companiesTotal = {}
+// function companySales() {
+//   // var companiesTotal = {}
 
 //   companySalesData.forEach(function(company) {
 //   if (!companiesTotal.hasOwnProperty(company.name)) {
@@ -49,20 +50,17 @@ function totalSales(sales) {
 // console.log(companySales())
 
 function CompanyTax() {
-  var companiesTotal = {}
+  // var companiesTotal = {}
 
   companySalesData.forEach(function(company) {
     var totalTax = 0
+
     if (company.province === "AB") {
       totalTax += totalSales(company.sales)*salesTaxRates.AB
-      // console.log(totalTax)
-      // console.log(totalSales(company.sales))
       } else if (company.province === "BC") {
       totalTax += totalSales(company.sales)*salesTaxRates.BC
-      // console.log(totalSales(totalTax))
       } else {
       totalTax += totalSales(company.sales)*salesTaxRates.SK
-      // console.log(totalSales(totalTax))
       }
     if (!companiesTotal.hasOwnProperty(company.name)){
       companiesTotal[company.name] = {'totalTax': totalTax}

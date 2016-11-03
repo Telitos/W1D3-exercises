@@ -35,12 +35,11 @@ function companySales(){
   if (!companiesTotal.hasOwnProperty(company.name)) {
     //var companyTotal = {}
     //companyTotal['Total-sale'] = totalSales(company.sales)
-    companiesTotal[company.name] = {'Total-sales':  totalSales(company.sales)};
+    companiesTotal[company.name] = {'totalSales':  totalSales(company.sales)};
   } else {
-    companiesTotal[company.name]['Total-sales'] += totalSales(company.sales)
+    companiesTotal[company.name]['totalSales'] += totalSales(company.sales)
     }
   })
   return companiesTotal
 }
 console.log(companySales())
-

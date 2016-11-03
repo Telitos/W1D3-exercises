@@ -24,7 +24,6 @@ var companySalesData = [
 
 
 function salesTaxReport (salesData, taxRates) {
-
   var companyReport = {}
 
   function totalSales(company) {
@@ -38,13 +37,13 @@ function salesTaxReport (salesData, taxRates) {
   }
 
   salesData.forEach(function(company) {
-
+    var totalSales = totalSales(company)
     var totalTax = calculateTax(company)
 
     if (!companyReport.hasOwnProperty(company.name)) {
-      companyReport[company.name] = {'totalSales' : totalSales(company), 'totalTaxes': totalTax}
+      companyReport[company.name] = {'totalSales' : totalSales, 'totalTaxes': totalTax}
     } else {
-      companyReport[company.name]['totalSales'] += totalSales(company)
+      companyReport[company.name]['totalSales'] += totalSales
       companyReport[company.name]['totalTaxes'] += totalTax
     }
   })
